@@ -11,11 +11,21 @@ class CLIMBINGSYSTEM_API ACSCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* ClimbAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* CancelClimbAction;
+
 public:
 	ACSCharacter(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	virtual void BeginPlay() override;
+
+	void Climb();
+
+	void CancelClimb();
 
 public:	
 	virtual void Tick(float DeltaTime) override;
