@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "CSCharacter.generated.h"
 
+struct FInputActionValue;
+
 UCLASS()
 class CLIMBINGSYSTEM_API ACSCharacter : public ACharacter
 {
@@ -17,6 +19,9 @@ class CLIMBINGSYSTEM_API ACSCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* CancelClimbAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* MovebAction;
+
 public:
 	ACSCharacter(const FObjectInitializer& ObjectInitializer);
 
@@ -26,6 +31,8 @@ protected:
 	void Climb();
 
 	void CancelClimb();
+
+	void Move(const FInputActionValue& Value);
 
 public:	
 	virtual void Tick(float DeltaTime) override;
